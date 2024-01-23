@@ -2,6 +2,6 @@
  My personal Version of HeroBorn
 
  TODO:
- Make arena Bigger
- Make pickup Bigger/ more obvious
+ Make arena bigger,
+ Make pickup bigger/ more obvious,
  Fix clipping issues
