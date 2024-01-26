@@ -9,7 +9,7 @@ public class Silencer_Behavior : MonoBehaviour
         if (collision.gameObject.name == "Player")
         {
             //remove item
-            Destroy(this.transform.parent.gameObject);
+            Destroy(this.transform.gameObject);
 
             //Pickup Confirmation
             Debug.Log("Silencer Collected");
