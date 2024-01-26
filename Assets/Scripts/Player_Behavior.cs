@@ -11,9 +11,8 @@ public class Player_Behavior : MonoBehaviour
     //camera reference
     public Transform cam;
 
-    private float vInput;
-    private float hInput;
-    private float targetAngle;
+    private Vector3 vInput;
+    private Vector3 hInput;
 
     private Rigidbody _rb;
 
@@ -32,16 +31,12 @@ public class Player_Behavior : MonoBehaviour
         /* i have no clue what im doing */
         
         //sets up movement quantities for the rigidbody system
-        vInput = Input.GetAxis("Vertical") * moveSpeed;
+        vInput = this.transform.forward * Input.GetAxis("Vertical");
         //Debug.Log(vInput);
-        hInput = Input.GetAxis("Horizontal") * moveSpeed;
-    }
+        hInput = this.transform.right * Input.GetAxis("Horizontal");
 
-    // use Fixedupdate for rigidbodies
-    private void FixedUpdate()
-    {
         //removes everything but the y component
-        Vector3 YRot = new Vector3(0,cam.eulerAngles.y,0);
+        Vector3 YRot = new Vector3(0, cam.eulerAngles.y, 0);
         Quaternion QYRot = Quaternion.Euler(YRot);
         //making rotation follow the rotation of the camera
         _rb.MoveRotation(QYRot);
@@ -51,7 +46,12 @@ public class Player_Behavior : MonoBehaviour
         //Debug.Log("cam" + cam.eulerAngles.y);
 
         // if you try to update one position then another the rb will only operate on the last one because of the frame call, so you have to consalidate movements
-        //_rb.MovePosition(this.transform.position + this.transform.right * hInput * Time.fixedDeltaTime + this.transform.forward * vInput * Time.fixedDeltaTime);
-        _rb.MovePosition(this.transform.position + this.transform.right * hInput * Time.fixedDeltaTime + this.transform.forward * vInput * Time.fixedDeltaTime);
+        _rb.MovePosition(this.transform.position + (hInput + vInput).normalized * moveSpeed * Time.fixedDeltaTime);
+    }
+
+    // use Fixedupdate for rigidbodies
+    private void FixedUpdate()
+    {
+
     }
 }
