@@ -13,6 +13,6 @@ public class Camera_Behavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        this.transform.Translate(this.transform.right * Input.GetAxis("Horizontal"));
     }
 }

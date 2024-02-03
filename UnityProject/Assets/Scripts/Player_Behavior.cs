@@ -11,6 +11,9 @@ public class Player_Behavior : MonoBehaviour
     //camera reference
     public Transform cam;
 
+    //animator reference
+    public Animator animator;
+
     private Vector3 vInput;
     private Vector3 hInput;
 
@@ -28,8 +31,10 @@ public class Player_Behavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        /* i have no clue what im doing */
-        
+        //animation stuff
+        //takes parameter name and value 
+        animator.SetFloat("velocityZ", Input.GetAxis("Vertical"));
+        animator.SetFloat("velocityX", Input.GetAxis("Horizontal"));
         //sets up movement quantities for the rigidbody system
         vInput = this.transform.forward * Input.GetAxis("Vertical");
         //Debug.Log(vInput);
