@@ -6,13 +6,17 @@ using UnityEngine;
 public class Player_Behavior : MonoBehaviour
 {
     //initial variables
-    public float moveSpeed = 100f;
+    public float moveSpeed = 1f;
+    private float crouchSpeed;
 
     //camera reference
     public Transform cam;
 
-    //animator reference
+    //animator reference. allows us to pass the animator in from the catmando mesh
     public Animator animator;
+    
+    //fetch box colider
+    private BoxCollider plrCollider;
 
     private Vector3 vInput;
     private Vector3 hInput;
@@ -25,14 +29,33 @@ public class Player_Behavior : MonoBehaviour
         // this gets rid of the cursor for camera movement purposes
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-        _rb = GetComponent<Rigidbody>();  
+        //establishes rigidbody component attached to the gameObject 
+        _rb = GetComponent<Rigidbody>();
+        //establishes box collider component attached to the gameObject
+        plrCollider = GetComponent<BoxCollider>();
+        crouchSpeed = moveSpeed / 2;
     }
 
     // Update is called once per frame
     void Update()
     {
+        //crouching - changes the size of the box collider based on the crouched state
+        if (Input.GetKey("left ctrl"))
+        {
+            plrCollider.size = new Vector3(0.2f, 0.3f, 0.2f);
+            plrCollider.center = new Vector3(0f, 0.15f, 0f);
+            moveSpeed = crouchSpeed;
+        }
+        else
+        {
+            plrCollider.size = new Vector3(0.2f, 0.45f, 0.2f);
+            plrCollider.center = new Vector3(0f, 0.22f, 0f);
+            moveSpeed = crouchSpeed * 2;
+        }
+
         //animation stuff
-        //takes parameter name and value 
+        //takes parameter name and value
+        animator.SetBool("isCrouched", Input.GetKey("left ctrl"));
         animator.SetFloat("velocityZ", Input.GetAxis("Vertical"));
         animator.SetFloat("velocityX", Input.GetAxis("Horizontal"));
         //sets up movement quantities for the rigidbody system
