@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Clip_Behavior : MonoBehaviour
 {
+    public Player_Behavior player;
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.name == "Player")
@@ -13,6 +14,8 @@ public class Clip_Behavior : MonoBehaviour
 
             //Pickup Confirmation
             Debug.Log("Ammo Collected");
+            //Player_Behavior player = new Player_Behavior(GameObject.Find("player").GetComponent<Player_Behavior>());
+            player.addAmmo();
         }
     }
 }

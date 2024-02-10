@@ -22,7 +22,8 @@ public class Player_Behavior : MonoBehaviour
     private Vector3 hInput;
 
     private Rigidbody _rb;
-
+    private int bullets = 0;
+    private bool isSilenced = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -77,9 +78,20 @@ public class Player_Behavior : MonoBehaviour
         _rb.MovePosition(this.transform.position + (hInput + vInput).normalized * moveSpeed * Time.fixedDeltaTime);
     }
 
-    // use Fixedupdate for rigidbodies
-    private void FixedUpdate()
+    public void addAmmo()
     {
+        bullets += 3;
+        Debug.Log("Got Bullets");
+    }
 
+    public void addSilencer()
+    {
+        isSilenced = true;
+        Debug.Log("Silencer Equiped");
+    }
+
+    public bool getSilencer()
+    {
+        return isSilenced;
     }
 }

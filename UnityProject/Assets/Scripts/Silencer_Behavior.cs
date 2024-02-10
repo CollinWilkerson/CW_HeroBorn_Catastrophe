@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Silencer_Behavior : MonoBehaviour
 {
+    public Player_Behavior player;
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.name == "Player")
@@ -13,6 +14,8 @@ public class Silencer_Behavior : MonoBehaviour
 
             //Pickup Confirmation
             Debug.Log("Silencer collected - Next shot won't alert enemies!");
+
+            player.addSilencer();
         }
     }
 }
