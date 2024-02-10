@@ -8,12 +8,15 @@ public class Player_Behavior : MonoBehaviour
     //initial variables
     public float moveSpeed = 1f;
     private float crouchSpeed;
+    public float bulletSpeed = 100f;
 
     //camera reference
     public Transform cam;
 
     //animator reference. allows us to pass the animator in from the catmando mesh
     public Animator animator;
+
+    public GameObject bullet;
     
     //fetch box colider
     private BoxCollider plrCollider;
@@ -22,7 +25,9 @@ public class Player_Behavior : MonoBehaviour
     private Vector3 hInput;
 
     private Rigidbody _rb;
+
     private int bullets = 0;
+    private bool shoot = false;
     private bool isSilenced = false;
     // Start is called before the first frame update
     void Start()
@@ -76,6 +81,30 @@ public class Player_Behavior : MonoBehaviour
 
         // if you try to update one position then another the rb will only operate on the last one because of the frame call, so you have to consalidate movements
         _rb.MovePosition(this.transform.position + (hInput + vInput).normalized * moveSpeed * Time.fixedDeltaTime);
+
+        if (bullets > 0 && Input.GetMouseButtonDown(0))
+        {
+            shoot = true;
+        }
+    }
+
+    private void FixedUpdate()
+    {
+        if (shoot)
+        {
+            //instantiate creates a new bullet based on the object we pass
+            GameObject newBullet = Instantiate(bullet, this.transform.position + (this.transform.right/5), this.transform.rotation) as GameObject;
+            //gets the new bullet rigid body
+            Rigidbody bulletRB = newBullet.GetComponent<Rigidbody>();
+            //sets the bullet direction to the players heading and gives it a magnitude of the bullet speed
+            bulletRB.velocity = this.transform.forward * bulletSpeed;
+            shoot = false;
+            bullets -= 1;
+            if (isSilenced)
+            {
+                isSilenced = false;
+            }
+        }
     }
 
     public void addAmmo()

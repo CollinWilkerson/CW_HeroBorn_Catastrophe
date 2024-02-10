@@ -786,8 +786,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 1
+  bulletSpeed: 10
   cam: {fileID: 963194228}
   animator: {fileID: 1642763174}
+  bullet: {fileID: 2916915217222597935, guid: f4c9aef000bfdb14f909b279f8d15460, type: 3}
 --- !u!65 &514565840
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -852,6 +854,11 @@ Transform:
   - {fileID: 1642763173}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &532256274 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8235746632836691246, guid: 5603b48d2cf501b4da4750f89f17d608, type: 3}
+  m_PrefabInstance: {fileID: 1308335378}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &558487822
 GameObject:
   m_ObjectHideFlags: 0
@@ -1040,6 +1047,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6be65cfc4bb1f474ea3d792c8989008f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cpTransform: {fileID: 532256274}
 --- !u!1 &619362716 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 5c0655b56e6327749888a9f26d4a975f, type: 3}
@@ -1211,6 +1219,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b383ad6ced27fc74e93dc49aa6f471b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 514565839}
+  inRange: 0
+  detected: 0
 --- !u!135 &683688325
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1727,7 +1738,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.31471184, y: -0.092779726, z: 0.030926572, w: 0.94413555}
+  m_LocalRotation: {x: 0.31471184, y: -0.09277977, z: 0.030926587, w: 0.94413555}
   m_LocalPosition: {x: -10.994681, y: 3.537, z: -1.6987418}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3382,7 +3393,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2117118083}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.31471184, y: -0.092779726, z: 0.030926572, w: 0.94413555}
+  m_LocalRotation: {x: 0.31471184, y: -0.09277977, z: 0.030926587, w: 0.94413555}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3402,6 +3413,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SilencerControl
       objectReference: {fileID: 0}
+    - target: {fileID: 4618658112449693406, guid: c9b85a2a77f56b448b7ef7816bb5b137, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 514565839}
     - target: {fileID: 6939986268711352866, guid: c9b85a2a77f56b448b7ef7816bb5b137, type: 3}
       propertyPath: m_LocalPosition.x
       value: -11.282
@@ -3499,6 +3514,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6501910373222995075, guid: a60cb6fea40ee8048afaeb486ad95296, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 514565839}
     - target: {fileID: 7721777964923322034, guid: a60cb6fea40ee8048afaeb486ad95296, type: 3}
       propertyPath: m_Name
       value: GunClipControl
