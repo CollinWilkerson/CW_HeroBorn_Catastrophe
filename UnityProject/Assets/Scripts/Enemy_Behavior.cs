@@ -36,4 +36,12 @@ public class Enemy_Behavior : MonoBehaviour
             Debug.Log("Player Detected");
         }
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.name == "Player")
+        {
+            player.damage();
+        }
+    }
 }

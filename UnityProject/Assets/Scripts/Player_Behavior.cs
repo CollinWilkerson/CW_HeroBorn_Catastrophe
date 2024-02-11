@@ -8,7 +8,7 @@ public class Player_Behavior : MonoBehaviour
     //initial variables
     public float moveSpeed = 1f;
     private float crouchSpeed;
-    public float bulletSpeed = 100f;
+    public float bulletSpeed = 10f;
 
     //camera reference
     public Transform cam;
@@ -29,6 +29,7 @@ public class Player_Behavior : MonoBehaviour
     private int bullets = 0;
     private bool shoot = false;
     private bool isSilenced = false;
+    private int currentHealth = 3;
     // Start is called before the first frame update
     void Start()
     {
@@ -113,6 +114,11 @@ public class Player_Behavior : MonoBehaviour
         Debug.Log("Got Bullets");
     }
 
+    public int getAmmo()
+    {
+        return bullets;
+    }
+
     public void addSilencer()
     {
         isSilenced = true;
@@ -122,5 +128,15 @@ public class Player_Behavior : MonoBehaviour
     public bool getSilencer()
     {
         return isSilenced;
+    }
+
+    public int getHealth()
+    {
+        return currentHealth;
+    }
+
+    public void damage()
+    {
+        currentHealth -= 1;
     }
 }
