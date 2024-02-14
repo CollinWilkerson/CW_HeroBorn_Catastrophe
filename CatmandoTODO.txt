@@ -1,0 +1,21 @@
+TODO:
+Create console 
+Create Console popup
+Create security door
+Create win screen
+Create Nav Mesh
+Make Enemy Nav Mesh Agent
+Create enemy walk cycle
+Create enemy detection popup
+Create enemy detection system
+finish active camo script
+Rebind crouched movement to spacebar
+
+optional:
+Remodel arena to prevent upwards teleportation
+Re textre Catmando's butt
+Fix gun animation
+Find better Idle animation
+Texture arena walls
+Animate gameover text
+

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player_Behavior : MonoBehaviour
 {
@@ -138,5 +139,10 @@ public class Player_Behavior : MonoBehaviour
     public void damage()
     {
         currentHealth -= 1;
+        if (currentHealth <= 0)
+        {
+            Debug.Log("player died");
+            SceneManager.LoadScene(1);
+        }
     }
 }
