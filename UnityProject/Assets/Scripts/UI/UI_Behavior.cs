@@ -13,6 +13,11 @@ public class UI_Behavior : MonoBehaviour
     public GameObject Life1;
     public GameObject Life2;
     public GameObject Life3;
+
+    private void Start()
+    {
+        this.gameObject.SetActive(true);
+    }
     // Update is called once per frame
     void Update()
     {
