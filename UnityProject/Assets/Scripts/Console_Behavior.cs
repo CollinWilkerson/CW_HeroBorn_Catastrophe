@@ -4,22 +4,25 @@ using UnityEngine;
 
 public class Console_Behavior : MonoBehaviour
 {
-    bool listen = false;
-    private void OnCollisionEnter(Collision collision)
+    public GameObject text;
+    private bool listen = false;
+    private void OnTriggerEnter(Collider collision)
     {
         if (collision.gameObject.name == "Player")
         {
             Debug.Log("In range");
             listen = true;
+            text.SetActive(true);
         }
     }
 
-    private void OnCollisionExit(Collision collision)
+    private void OnTriggerExit(Collider collision)
     {
         if(collision.gameObject.name == "Player")
         {
             Debug.Log("Player out of range");
             listen = false;
+            text.SetActive(false);
         }
     }
 
@@ -29,7 +32,7 @@ public class Console_Behavior : MonoBehaviour
         {
             if(Input.GetKeyDown(KeyCode.E)) 
             {
-                
+                Destroy(text.transform);
             }
         }
     }
