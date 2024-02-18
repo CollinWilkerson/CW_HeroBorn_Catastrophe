@@ -6,9 +6,10 @@ public class Console_Behavior : MonoBehaviour
 {
     public GameObject text;
     private bool listen = false;
+    private bool active = true;
     private void OnTriggerEnter(Collider collision)
     {
-        if (collision.gameObject.name == "Player")
+        if (collision.gameObject.name == "Player" && active)
         {
             Debug.Log("In range");
             listen = true;
@@ -32,8 +33,14 @@ public class Console_Behavior : MonoBehaviour
         {
             if(Input.GetKeyDown(KeyCode.E)) 
             {
-                Destroy(text.transform);
+                text.SetActive(false);
+                active = false;
             }
         }
+    }
+
+    public bool getActive()
+    {
+        return active;
     }
 }

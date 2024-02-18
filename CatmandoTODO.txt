@@ -18,4 +18,10 @@ Fix gun animation
 Find better Idle animation
 Texture arena walls
 Animate gameover text
+Position arrays
+[(0,2,7),(0,2,-7),(-11.5,2,7),(-11.5,2,-7)] //character spawn loop
+[(11.5,2,-7),(11.5,2,7),(0,2,7),(0,2,-7)] //far end loop F2
+[(0,0,8,),(2,0,0),(0,0,-8),(-2,0,0)] //Middle Isle F1
+[(12,0,-1),(11,0,-7.5),
+
 

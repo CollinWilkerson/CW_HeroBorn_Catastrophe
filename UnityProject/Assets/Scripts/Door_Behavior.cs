@@ -7,14 +7,14 @@ using UnityEngine.SceneManagement;
 public class Door_Behavior : MonoBehaviour
 {
     public Player_Behavior player;
-    private bool isActive = true;
+    public Console_Behavior security;
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.name == "Player" && isActive)
+        if (collision.gameObject.name == "Player" && security.getActive())
         {
             player.damage();
         }
-        else if (collision.gameObject.name == "Player" && !isActive)
+        else if (collision.gameObject.name == "Player" && !security.getActive())
         {
             SceneManager.LoadScene(2);
         }
