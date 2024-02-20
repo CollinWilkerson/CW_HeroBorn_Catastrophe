@@ -7,16 +7,28 @@ public class Enemy_Behavior : MonoBehaviour
 {
     public Player_Behavior player;
     //gives the enemy a loop to follow
+    [Range(0,5)]
     public int LoopID = 0;
 
     //holds positions to patrol to
     private Vector3[] route = new Vector3[4];
     private NavMeshAgent agent;
     private bool inRange = false;
-    private bool detected = false;
+    public bool detected = false;
+    public float activeDetection = 0f;
     private int position = 0;
     private int lives = 3;
     //triggers when a gameobject enters the sphere
+
+    //All of my visual detection variables from https://www.youtube.com/watch?v=j1-OyLo77ss
+    public float radius;
+    [Range(0,360)]
+    public float angle;
+
+    public GameObject playerRef;
+
+    public LayerMask targetMask;
+    public LayerMask obstructionMask;
 
     private void Start()
     {
@@ -49,6 +61,9 @@ public class Enemy_Behavior : MonoBehaviour
         }
         agent = GetComponent<NavMeshAgent>();
         MoveToNextPatrolLocation();
+        playerRef = GameObject.FindGameObjectWithTag("Player");  //from tutorial
+        //starts the coroutine that runs slower than update for performance reasons
+        StartCoroutine(FOVRoutine());
     }
     void OnTriggerEnter(Collider other)
     {
@@ -77,6 +92,13 @@ public class Enemy_Behavior : MonoBehaviour
         {
             player.damage();
         }
+        else if (collision.gameObject.name == "Bullet(clone)")
+        {
+            lives -= 1;
+            Debug.Log("enemy hit");
+            if (lives <= 0)
+                Destroy(this.transform.gameObject);
+        }
     }
 
     private void Update()
@@ -84,6 +106,7 @@ public class Enemy_Behavior : MonoBehaviour
         //checks if the player shoots in the enemy's listening range
         if(inRange && Input.GetMouseButtonDown(0) && !player.getSilencer())
         {
+            activeDetection += 0.5f;
             detected = true;
             Debug.Log("Player Detected");
         }
@@ -92,6 +115,64 @@ public class Enemy_Behavior : MonoBehaviour
         {
             MoveToNextPatrolLocation();
         }
+        if (detected && activeDetection <= 1)
+        {
+            activeDetection += 0.4f * Time.deltaTime;
+        }
+        else if(!detected && activeDetection >= 0)
+        {
+            activeDetection -= 0.2f * Time.deltaTime;
+        }
+        
+    }
+
+    // coroutine runs less often than update for performance reasons
+    private IEnumerator FOVRoutine()
+    {
+        //how often the coroutine runs
+        WaitForSeconds wait = new WaitForSeconds(0.2f);
+
+        while (true)
+        {
+            yield return wait;
+            FeildOfViewCheck();
+        }
+    }
+
+    private void FeildOfViewCheck()
+    {
+        //this is what actually looks for the player
+        Collider[] rangeChecks = Physics.OverlapSphere(transform.position, radius, targetMask);
+
+        //If anything is in our array it has picked up our player
+        if (rangeChecks.Length != 0)
+        {
+            //the only thing in the targetmask is the player, so we use the first index
+            Transform target = rangeChecks[0].transform;
+            //establishes direction to enemy rotation to player location
+            Vector3 directionToTarget = (target.position - transform.position).normalized;
+
+            //gets the angle between the forward direction and the normalized vector to the target and compares it to half the angle we established in the beginning.
+            //the angle is halved because half of the angle is to the left and half is to the right
+            if (Vector3.Angle(transform.forward, directionToTarget) < angle / 2)
+            {
+                float distanceToTarget = Vector3.Distance(transform.position, target.position);
+
+                //starts raycast from center of enemy, toward the player, from the distance to the player, only checking objects in the obstructionMask
+                if (!Physics.Raycast(transform.position, directionToTarget, distanceToTarget, obstructionMask))
+                {
+                    detected = true;
+                }
+                else
+                    detected = false;
+            }
+            else
+                //this could cause problems later
+                detected = false;
+        }
+        //if the player is detected and leaves the detection range then they are no longer being detected
+        else if (detected)
+            detected = false;
     }
 
     void MoveToNextPatrolLocation()

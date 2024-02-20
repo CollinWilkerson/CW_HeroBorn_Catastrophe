@@ -48,7 +48,7 @@ public class Player_Behavior : MonoBehaviour
     void Update()
     {
         //crouching - changes the size of the box collider based on the crouched state
-        if (Input.GetKey("left ctrl"))
+        if (Input.GetKey("space"))
         {
             plrCollider.size = new Vector3(0.2f, 0.3f, 0.2f);
             plrCollider.center = new Vector3(0f, 0.15f, 0f);
@@ -63,7 +63,7 @@ public class Player_Behavior : MonoBehaviour
 
         //animation stuff
         //takes parameter name and value
-        animator.SetBool("isCrouched", Input.GetKey("left ctrl"));
+        animator.SetBool("isCrouched", Input.GetKey("space"));
         animator.SetFloat("velocityZ", Input.GetAxis("Vertical"));
         animator.SetFloat("velocityX", Input.GetAxis("Horizontal"));
         //sets up movement quantities for the rigidbody system
@@ -111,7 +111,7 @@ public class Player_Behavior : MonoBehaviour
 
     public void addAmmo()
     {
-        bullets += 3;
+        bullets += 10;
         Debug.Log("Got Bullets");
     }
 
