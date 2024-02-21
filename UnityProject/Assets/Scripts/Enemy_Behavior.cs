@@ -9,12 +9,14 @@ public class Enemy_Behavior : MonoBehaviour
     //gives the enemy a loop to follow
     [Range(0,5)]
     public int LoopID = 0;
+    public Canvas detectionUI;
 
     //holds positions to patrol to
     private Vector3[] route = new Vector3[4];
     private NavMeshAgent agent;
     private bool inRange = false;
     public bool detected = false;
+    private bool chase = false;
     public float activeDetection = 0f;
     private int position = 0;
     private int lives = 3;
@@ -72,6 +74,7 @@ public class Enemy_Behavior : MonoBehaviour
         {
             Debug.Log("Player detected - Listening");
             inRange = true;
+            agent.destination = playerRef.transform.position;
         }
     }
 
@@ -92,7 +95,7 @@ public class Enemy_Behavior : MonoBehaviour
         {
             player.damage();
         }
-        else if (collision.gameObject.name == "Bullet(clone)")
+        else if (collision.gameObject.name == "Bullet(Clone)")
         {
             lives -= 1;
             Debug.Log("enemy hit");
@@ -123,6 +126,16 @@ public class Enemy_Behavior : MonoBehaviour
         {
             activeDetection -= 0.2f * Time.deltaTime;
         }
+        if (activeDetection < 0)
+            detectionUI.gameObject.SetActive(false);
+        else
+            detectionUI.gameObject.SetActive(true);
+        //if the player is detected all the way the enemy will chase them, once the player looses all detection the enemy will leave them alone
+        if(activeDetection >= 1.0f)
+            chase = true;
+        else if(activeDetection <= 0.0f)
+            chase = false;
+        
         
     }
 
