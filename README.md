@@ -1,6 +1,8 @@
 # CW_HeroBorn_Catastrophy
 My personal Version of HeroBorn
 
+Due to improvements to the game, the web build kind of runs like trash
+
 PLAY AT: https://collinwilkerson.github.io/CW_HeroBorn_Catastrophy/
 
 Controls:
