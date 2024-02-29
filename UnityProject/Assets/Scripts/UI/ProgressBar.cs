@@ -5,20 +5,20 @@ using UnityEngine.UI;
 
 public class ProgressBar : MonoBehaviour
 {
-    public GameObject player;
+    public GameObject camera;
     public Enemy_Behavior enemy;
     public Image mask;
 
     // Start is called before the first frame update
     void Start()
     {
-        player = GameObject.Find("Player");
+        camera = GameObject.Find("Main Camera");
     }
 
     // Update is called once per frame
     void Update()
     {
-        this.transform.LookAt(player.transform);
+        this.transform.LookAt(camera.transform);
         GetCurrentFill();
     }
 
