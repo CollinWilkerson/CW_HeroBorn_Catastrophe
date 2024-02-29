@@ -19,7 +19,7 @@ public class Clip_Behavior : MonoBehaviour
 
             //Pickup Confirmation
             Debug.Log("Ammo Collected");
-            //Player_Behavior player = new Player_Behavior(GameObject.Find("player").GetComponent<Player_Behavior>());
+            
             player.addAmmo();
         }
     }
