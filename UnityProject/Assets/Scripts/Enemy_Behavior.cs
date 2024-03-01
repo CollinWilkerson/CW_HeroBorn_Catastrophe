@@ -74,7 +74,7 @@ public class Enemy_Behavior : MonoBehaviour
         {
             Debug.Log("Player detected - Listening");
             inRange = true;
-            agent.destination = playerRef.transform.position;
+            
         }
     }
 
@@ -175,6 +175,7 @@ public class Enemy_Behavior : MonoBehaviour
                 if (!Physics.Raycast(transform.position, directionToTarget, distanceToTarget, obstructionMask))
                 {
                     detected = true;
+                    agent.destination = playerRef.transform.position;
                 }
                 else
                     detected = false;
@@ -186,6 +187,12 @@ public class Enemy_Behavior : MonoBehaviour
         //if the player is detected and leaves the detection range then they are no longer being detected
         else if (detected)
             detected = false;
+        
+        //chases the player if the detection is maxed out.
+        if (chase)
+        {
+            agent.destination = playerRef.transform.position;
+        }
     }
 
     void MoveToNextPatrolLocation()

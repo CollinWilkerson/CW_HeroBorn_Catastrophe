@@ -321,8 +321,8 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.3
-  m_Speed: 1
-  m_Acceleration: 2
+  m_Speed: 2
+  m_Acceleration: 10
   avoidancePriority: 50
   m_AngularSpeed: 120
   m_StoppingDistance: 0
@@ -524,7 +524,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c02ff74daff6ca341b025eddc09a9904, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
+  camera: {fileID: 0}
   enemy: {fileID: 1530259435305765765}
   mask: {fileID: 8127325512196345536}
 --- !u!1 &6907917318153539147
