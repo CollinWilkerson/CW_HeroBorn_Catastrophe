@@ -82,7 +82,7 @@ public class Player_Behavior : MonoBehaviour
         //Debug.Log("cam" + cam.eulerAngles.y);
 
         // if you try to update one position then another the rb will only operate on the last one because of the frame call, so you have to consalidate movements
-        _rb.MovePosition(this.transform.position + (hInput + vInput).normalized * moveSpeed * Time.fixedDeltaTime);
+        _rb.MovePosition(this.transform.position + (hInput + vInput).normalized * moveSpeed);
 
         if (bullets > 0 && Input.GetMouseButtonDown(0))
         {
@@ -111,7 +111,7 @@ public class Player_Behavior : MonoBehaviour
 
     public void addAmmo()
     {
-        bullets += 10;
+        bullets += 100;
         Debug.Log("Got Bullets");
     }
 

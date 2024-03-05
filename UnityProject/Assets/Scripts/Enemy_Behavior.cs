@@ -95,13 +95,6 @@ public class Enemy_Behavior : MonoBehaviour
         {
             player.damage();
         }
-        else if (collision.gameObject.name == "Bullet(Clone)")
-        {
-            lives -= 1;
-            Debug.Log("enemy hit");
-            if (lives <= 0)
-                Destroy(this.transform.gameObject);
-        }
     }
 
     private void Update()
@@ -202,5 +195,15 @@ public class Enemy_Behavior : MonoBehaviour
         //takes a vector3
         agent.destination = route[position];
         position = (position + 1) % route.Length;
+    }
+
+    public void damage()
+    {
+        Debug.Log("enemy hit");
+        lives -= 1;
+        if (lives == 0)
+        {
+            Destroy(gameObject);
+        }
     }
 }
