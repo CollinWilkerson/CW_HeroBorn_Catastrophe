@@ -1,4 +1,4 @@
-# CW_HeroBorn_Catastrophy
+# CW_HeroBorn_Catastrophe
 My personal Version of HeroBorn
 
 Due to improvements to the game, the web build may run like trash
