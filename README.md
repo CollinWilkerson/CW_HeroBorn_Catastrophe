@@ -3,7 +3,7 @@ My personal Version of HeroBorn
 
 Due to improvements to the game, the web build may run like trash
 
-PLAY AT: https://collinwilkerson.github.io/CW_HeroBorn_Catastrophy/
+PLAY AT: https://collinwilkerson.github.io/CW_HeroBorn_Catastrophe/
 
 Controls:
 
