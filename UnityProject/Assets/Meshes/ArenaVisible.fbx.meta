@@ -3,7 +3,52 @@ guid: 5c0655b56e6327749888a9f26d4a975f
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: BlackWall
+    second: {fileID: 2100000, guid: c3768d76fc7ddff478f1a0d706a88289, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: ConcreteFloor
+    second: {fileID: 2100000, guid: b976df87ee24a6647ae4038c57a0273c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: CorogatedMetal
+    second: {fileID: 2100000, guid: 38ac34168ab89b6419088094165379fb, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: FenceMetal
+    second: {fileID: 2100000, guid: ba3e8182df002d042b2022e87b9fc45b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: UV
+    second: {fileID: 2100000, guid: b09e1d624baa02344ae5586cd26a5ac5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Wall
+    second: {fileID: 2100000, guid: f5952a69ce0159d41be93eef86ccb923, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: metal
+    second: {fileID: 2100000, guid: e96d21887b363a54a88ea1c71406b2a8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: scuffed_cement
+    second: {fileID: 2100000, guid: 809bbbda82620464992a751298b6431e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: yellowFenceMetal
+    second: {fileID: 2100000, guid: 07738d03ae261c740bc4d95ce569aebf, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
