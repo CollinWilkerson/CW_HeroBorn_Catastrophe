@@ -8,12 +8,12 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: FenceMetal
-    second: {fileID: 2100000, guid: f1b87fdd7ed9a9e4e85227f3691afb37, type: 2}
+    second: {fileID: 2100000, guid: 023ae162a5d2a564582cc087e512f329, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: light
-    second: {fileID: 2100000, guid: d28c0b864435a524ca23e0195a16cb34, type: 2}
+    second: {fileID: 2100000, guid: f6e18660259acd14d99afb07d3da3de3, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -56,7 +56,7 @@ ModelImporter:
     nodeNameCollisionStrategy: 1
     fileIdsGeneration: 2
     swapUVChannels: 0
-    generateSecondaryUV: 0
+    generateSecondaryUV: 1
     useFileUnits: 1
     keepQuads: 0
     weldVertices: 1
