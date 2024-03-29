@@ -12,7 +12,7 @@ public class GameOver_Behavior : MonoBehaviour
     }
     public void Reset()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(1);
         Debug.Log("Geturn to game scene");
     }
 

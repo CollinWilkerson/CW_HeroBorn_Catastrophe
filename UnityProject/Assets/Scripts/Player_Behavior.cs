@@ -142,7 +142,7 @@ public class Player_Behavior : MonoBehaviour
         if (currentHealth <= 0)
         {
             Debug.Log("player died");
-            SceneManager.LoadScene(1);
+            SceneManager.LoadScene(2);
         }
     }
 }
