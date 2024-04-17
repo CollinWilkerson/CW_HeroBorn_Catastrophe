@@ -18,6 +18,10 @@ public class Player_Behavior : MonoBehaviour
     public Animator animator;
 
     public GameObject bullet;
+
+    [SerializeField] AudioClip ammoPickup;
+    [SerializeField] AudioClip shot;
+    [SerializeField] AudioClip silencedShot;
     
     //fetch box colider
     private BoxCollider plrCollider;
@@ -31,6 +35,9 @@ public class Player_Behavior : MonoBehaviour
     private bool shoot = false;
     private bool isSilenced = false;
     private int currentHealth = 3;
+
+    private AudioSource audioSource;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -42,6 +49,7 @@ public class Player_Behavior : MonoBehaviour
         //establishes box collider component attached to the gameObject
         plrCollider = GetComponent<BoxCollider>();
         crouchSpeed = moveSpeed / 2;
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -94,8 +102,17 @@ public class Player_Behavior : MonoBehaviour
     {
         if (shoot)
         {
-            //instantiate creates a new bullet based on the object we pass
-            GameObject newBullet = Instantiate(bullet, this.transform.position + (this.transform.right/5), this.transform.rotation) as GameObject;
+            //gun sound effects
+            if (isSilenced)
+            {
+                audioSource.PlayOneShot(silencedShot);
+            }
+            else
+            {
+                audioSource.PlayOneShot(shot);
+            }
+                //instantiate creates a new bullet based on the object we pass
+                GameObject newBullet = Instantiate(bullet, this.transform.position + (this.transform.right / 5), this.transform.rotation) as GameObject;
             //gets the new bullet rigid body
             Rigidbody bulletRB = newBullet.GetComponent<Rigidbody>();
             //sets the bullet direction to the players heading and gives it a magnitude of the bullet speed
@@ -111,7 +128,8 @@ public class Player_Behavior : MonoBehaviour
 
     public void addAmmo()
     {
-        bullets += 100;
+        audioSource.PlayOneShot(ammoPickup);
+        bullets += 10;
         Debug.Log("Got Bullets");
     }
 
