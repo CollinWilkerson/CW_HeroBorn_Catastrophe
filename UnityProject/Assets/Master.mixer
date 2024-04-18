@@ -1,5 +1,19 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!244 &-5969475620360361909
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_EffectID: b9337e63df5549e46a4546606df6898f
+  m_EffectName: Attenuation
+  m_MixLevel: ba1f06b9b08d827409d7b8399762c5d2
+  m_Parameters: []
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
 --- !u!244 &-4733070776679651632
 AudioMixerEffectController:
   m_ObjectHideFlags: 3
@@ -14,6 +28,25 @@ AudioMixerEffectController:
   m_SendTarget: {fileID: 0}
   m_EnableWetMix: 0
   m_Bypass: 0
+--- !u!243 &-2951244148340603202
+AudioMixerGroupController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Footsteps
+  m_AudioMixer: {fileID: 24100000}
+  m_GroupID: 0e9344210668a754a96b53f273533b49
+  m_Children: []
+  m_Volume: 3519d6935a5e5d7429066f3defe166fa
+  m_Pitch: 52b21fe402a9d644184cf9d05512992e
+  m_Send: 00000000000000000000000000000000
+  m_Effects:
+  - {fileID: -5969475620360361909}
+  m_UserColorIndex: 0
+  m_Mute: 0
+  m_Solo: 0
+  m_BypassEffects: 0
 --- !u!241 &24100000
 AudioMixerController:
   m_ObjectHideFlags: 0
@@ -35,6 +68,7 @@ AudioMixerController:
     - 775acff528d891546a2370c1762e47e6
     - ef508004ba56fcd44b9b322141238c36
     - 15136ed3cb3a6bb46bbd36a0aaefa5eb
+    - 0e9344210668a754a96b53f273533b49
     name: View
   m_CurrentViewIndex: 0
   m_TargetSnapshot: {fileID: 24500006}
@@ -82,7 +116,9 @@ AudioMixerSnapshotController:
   m_Name: Snapshot
   m_AudioMixer: {fileID: 24100000}
   m_SnapshotID: cb006f04bf554d744a1e4e0e044d012c
-  m_FloatValues: {}
+  m_FloatValues:
+    3519d6935a5e5d7429066f3defe166fa: -15
+    7764ca26441fac74ea2ab3e6d849038f: -2
   m_TransitionOverrides: {}
 --- !u!244 &574022806363876553
 AudioMixerEffectController:
@@ -107,7 +143,8 @@ AudioMixerGroupController:
   m_Name: SFX
   m_AudioMixer: {fileID: 24100000}
   m_GroupID: 15136ed3cb3a6bb46bbd36a0aaefa5eb
-  m_Children: []
+  m_Children:
+  - {fileID: -2951244148340603202}
   m_Volume: 29002645a27e7894e8c0bb094e9b4395
   m_Pitch: ad5ccfc74daf9484698bf41a67348b7c
   m_Send: 00000000000000000000000000000000

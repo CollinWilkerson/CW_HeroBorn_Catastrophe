@@ -12,6 +12,7 @@ public class Door_Behavior : MonoBehaviour
     {
         if (collision.gameObject.name == "Player" && security.getActive())
         {
+            GetComponent<AudioSource>().Play();
             player.damage();
         }
         else if (collision.gameObject.name == "Player" && !security.getActive())

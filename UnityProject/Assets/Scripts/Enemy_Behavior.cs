@@ -31,6 +31,8 @@ public class Enemy_Behavior : MonoBehaviour
 
     public LayerMask targetMask;
     public LayerMask obstructionMask;
+    [SerializeField] AudioClip detectedAudio;
+    [SerializeField] AudioClip[] _hitClips;
 
     private void Start()
     {
@@ -93,6 +95,9 @@ public class Enemy_Behavior : MonoBehaviour
     {
         if (collision.gameObject.name == "Player")
         {
+            Debug.Log("hit");
+            AudioClip clip = _hitClips[UnityEngine.Random.Range(0, _hitClips.Length)];
+            GetComponent<AudioSource>().PlayOneShot(clip);
             player.damage();
         }
     }
@@ -124,9 +129,12 @@ public class Enemy_Behavior : MonoBehaviour
         else
             detectionUI.gameObject.SetActive(true);
         //if the player is detected all the way the enemy will chase them, once the player looses all detection the enemy will leave them alone
-        if(activeDetection >= 1.0f)
+        if (activeDetection >= 1.0f)
+        {
+            GetComponent<AudioSource>().PlayOneShot(detectedAudio);
             chase = true;
-        else if(activeDetection <= 0.0f)
+        }
+        else if (activeDetection <= 0.0f)
             chase = false;
         
         

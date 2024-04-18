@@ -33,6 +33,7 @@ public class Console_Behavior : MonoBehaviour
         {
             if(Input.GetKeyDown(KeyCode.E)) 
             {
+                GetComponent<AudioSource>().Play();
                 text.SetActive(false);
                 active = false;
             }
