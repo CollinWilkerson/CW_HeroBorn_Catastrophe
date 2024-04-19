@@ -93,7 +93,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 112000000, guid: a50959ffa5cfd5147b30d8e26778a43a, type: 2}
+  m_LightingDataAsset: {fileID: 112000000, guid: 406a841b70b60b94c93a6bd9742203f6, type: 2}
   m_LightingSettings: {fileID: 4890085278179872738, guid: b976980ba2dadf74cbae0c90dc72324f, type: 2}
 --- !u!196 &4
 NavMeshSettings:
@@ -12291,6 +12291,55 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4253985130801369091, guid: 2158602dfd52b304cb7d3e9671010400, type: 3}
   m_PrefabInstance: {fileID: 1920979394}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1957280770
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1957280772}
+  - component: {fileID: 1957280771}
+  m_Layer: 0
+  m_Name: PostProcessing
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1957280771
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1957280770}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IsGlobal: 1
+  priority: 0
+  blendDistance: 0
+  weight: 1
+  sharedProfile: {fileID: 11400000, guid: 91f789631aa76c643a710e21d286c5f8, type: 2}
+--- !u!4 &1957280772
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1957280770}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -10.908676, y: 3.4798517, z: -2.1366563}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1967454884 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4000011713300004, guid: a62abbb708e3f49489bde29e5cfc3ebd, type: 3}
@@ -14253,3 +14302,4 @@ SceneRoots:
   - {fileID: 1774336205}
   - {fileID: 1259013062}
   - {fileID: 882726756}
+  - {fileID: 1957280772}
