@@ -35,6 +35,7 @@ public class Console_Behavior : MonoBehaviour
             {
                 GetComponent<AudioSource>().Play();
                 text.SetActive(false);
+                GameObject.FindFirstObjectByType<PP_Behavior>().SecondaryPostProcess();
                 active = false;
             }
         }
