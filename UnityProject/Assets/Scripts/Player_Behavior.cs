@@ -10,6 +10,7 @@ public class Player_Behavior : MonoBehaviour
     public float moveSpeed = 1f;
     private float crouchSpeed;
     public float bulletSpeed = 10f;
+    public bool isCamo = false;
 
     //camera reference
     public Transform cam;
@@ -129,7 +130,7 @@ public class Player_Behavior : MonoBehaviour
     public void addAmmo()
     {
         audioSource.PlayOneShot(ammoPickup);
-        bullets += 10;
+        bullets += 5;
         Debug.Log("Got Bullets");
     }
 
@@ -160,7 +161,7 @@ public class Player_Behavior : MonoBehaviour
         if (currentHealth <= 0)
         {
             Debug.Log("player died");
-            SceneManager.LoadScene(2);
+            SceneManager.LoadScene("Game Over");
         }
     }
 }

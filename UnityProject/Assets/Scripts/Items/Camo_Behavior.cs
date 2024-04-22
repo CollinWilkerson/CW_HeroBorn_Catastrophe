@@ -13,6 +13,7 @@ public class Camo_Behavior : MonoBehaviour
 
             //Pickup Confirmation
             Debug.Log("Camo Aquired - Enimes can't detect you while crouched");
+            collision.gameObject.GetComponent<Player_Behavior>().isCamo = true;
         }
     }
 }

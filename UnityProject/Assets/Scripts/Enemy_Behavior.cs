@@ -74,6 +74,7 @@ public class Enemy_Behavior : MonoBehaviour
         //checks game object name
         if (other.name == "Player")
         {
+            //listens for gunshots if the player is in range
             Debug.Log("Player detected - Listening");
             inRange = true;
             
@@ -86,7 +87,7 @@ public class Enemy_Behavior : MonoBehaviour
         //does same thing as before
         if (other.name == "Player")
         {
-            Debug.Log("Player out of range, resume patrol");
+            //stops listening if the player is out of range
             inRange = false;
         }
     }
@@ -96,6 +97,7 @@ public class Enemy_Behavior : MonoBehaviour
         if (collision.gameObject.name == "Player")
         {
             Debug.Log("hit");
+            //plays punching audio
             AudioClip clip = _hitClips[UnityEngine.Random.Range(0, _hitClips.Length)];
             GetComponent<AudioSource>().PlayOneShot(clip);
             player.damage();
@@ -105,7 +107,7 @@ public class Enemy_Behavior : MonoBehaviour
     private void Update()
     {
         //checks if the player shoots in the enemy's listening range
-        if(inRange && Input.GetMouseButtonDown(0) && !player.getSilencer())
+        if(inRange && Input.GetMouseButtonDown(0) && !player.getSilencer() && player.getAmmo() > 0)
         {
             activeDetection += 0.5f;
             detected = true;
@@ -136,6 +138,11 @@ public class Enemy_Behavior : MonoBehaviour
         }
         else if (activeDetection <= 0.0f)
             chase = false;
+        if (player.isCamo)
+        {
+            activeDetection = 0;
+            chase = false;
+        }
         
         
     }
@@ -175,8 +182,13 @@ public class Enemy_Behavior : MonoBehaviour
                 //starts raycast from center of enemy, toward the player, from the distance to the player, only checking objects in the obstructionMask
                 if (!Physics.Raycast(transform.position, directionToTarget, distanceToTarget, obstructionMask))
                 {
-                    detected = true;
-                    agent.destination = playerRef.transform.position;
+                    if (!player.isCamo) 
+                    {
+                        detected = true;
+                        agent.destination = playerRef.transform.position;
+                    }
+                    else
+                        detected = false;
                 }
                 else
                     detected = false;

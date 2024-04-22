@@ -17,7 +17,7 @@ public class Door_Behavior : MonoBehaviour
         }
         else if (collision.gameObject.name == "Player" && !security.getActive())
         {
-            SceneManager.LoadScene(3);
+            SceneManager.LoadScene("Game Win");
         }
 
     }
